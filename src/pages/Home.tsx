@@ -1,10 +1,9 @@
-import classes from "./Home.module.scss";
 import "../styles/styles.scss";
 import "../styles/_mixins.scss";
+import { Button } from "../components/ui/Button.tsx";
 
 const Home = () => {
-  console.log(classes);
-  return <h1>Home</h1>;
+  return <Button onClick={() => {}}>Hello</Button>;
 };
 
 export { Home };
