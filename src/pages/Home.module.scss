@@ -14,6 +14,11 @@
     justify-content: center;
     column-gap: 20px;
 
+    @include tablet {
+      flex-direction: column;
+      row-gap: 30px;
+    }
+
     &_select{
       margin:0;
       width: 300px;
@@ -24,6 +29,10 @@
       flex-direction: column;
       row-gap: 15px;
       font-size: 20px;
+
+      @include tablet {
+        row-gap:10px;
+      }
     }
 
     &_input{

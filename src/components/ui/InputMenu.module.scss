@@ -1,8 +1,14 @@
+@import '../../styles/styles';
+
 .InputMenu__wrapper {
   display: flex;
   flex-direction: column;
   max-width: 400px;
   row-gap: 15px;
+
+  @include tablet {
+    row-gap:10px;
+  }
 }
 
 .InputMenu{
