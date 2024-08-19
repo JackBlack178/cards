@@ -1,0 +1,21 @@
+.InputMenu__wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  row-gap: 15px;
+}
+
+.InputMenu{
+
+  &__title {
+    font-size: 20px;
+  }
+
+  &__select {
+    font-size: 20px;
+  }
+}
+
+
+
+

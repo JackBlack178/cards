@@ -1,1 +1,41 @@
 @import '../styles/styles';
+
+.Home {
+  composes: container;
+  margin-top:20px;
+
+  &_inner {
+
+  }
+
+  &__params {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+
+    &_select{
+      margin:0;
+      width: 300px;
+    }
+
+    &_input_wrapper {
+      display: flex;
+      flex-direction: column;
+      row-gap: 15px;
+      font-size: 20px;
+    }
+
+    &_input{
+      padding: 2px 8px;
+      border:0.9px solid rgb(204, 204, 204);
+      height: 43px;
+      border-radius: 6px;
+      width: 300px;
+    }
+
+    &_input_label {
+
+    }
+  }
+}
