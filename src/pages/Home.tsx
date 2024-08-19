@@ -1,6 +1,7 @@
 import Header from "../widgets/Header.tsx";
 import cl from "./Home.module.scss";
 import { InputMenu } from "../components/ui/InputMenu.tsx";
+import { useEffect } from "react";
 
 const sortTypes = [
   {
@@ -16,6 +17,8 @@ const sortTypes = [
 const defaultSortState = sortTypes[0];
 
 const Home = () => {
+  useEffect(() => {}, []);
+
   return (
     <>
       <Header></Header>
