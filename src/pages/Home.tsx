@@ -1,7 +1,9 @@
 import Header from "../widgets/Header.tsx";
 import cl from "./Home.module.scss";
 import { InputMenu } from "../components/ui/InputMenu.tsx";
+import { useAppDispatch } from "../hooks/useAppDispatch.ts";
 import { useEffect } from "react";
+import { getArticles } from "../lib/actions.ts";
 
 const sortTypes = [
   {
@@ -17,7 +19,11 @@ const sortTypes = [
 const defaultSortState = sortTypes[0];
 
 const Home = () => {
-  useEffect(() => {}, []);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getArticles());
+  }, []);
 
   return (
     <>

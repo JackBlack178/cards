@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface IArticle {
+export interface IArticle {
   id: string | number;
   title: string;
   body: string;
@@ -9,19 +9,23 @@ interface IArticle {
   url?: string;
 }
 
-type stateType = IArticle[];
+type stateType = {
+  articles: IArticle[];
+};
 
-const initialState: stateType = [];
+const initialState: stateType = {
+  articles: [],
+};
 
-export const pageSlice = createSlice({
+export const articleSlice = createSlice({
   name: "article",
   initialState,
   reducers: {
-    getArticles: (state: stateType, action: PayloadAction<stateType>) => {
-      state = action.payload;
+    getArticles: (state: stateType, action: PayloadAction<IArticle[]>) => {
+      state.articles = action.payload;
     },
   },
 });
 
-export const pageActions = pageSlice.actions;
-export default pageSlice.reducer;
+export const articleActions = articleSlice.actions;
+export default articleSlice.reducer;
