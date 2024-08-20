@@ -46,7 +46,6 @@ export function useSortCard() {
   // }, [articles]);
 
   useEffect(() => {
-    console.log("called2");
     dispatch(getArticles());
   }, []);
 

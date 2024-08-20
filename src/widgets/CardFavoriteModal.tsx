@@ -49,13 +49,12 @@ const CardFavoriteModal: FC<CardFavoriteModalProps> = ({
               <CSSTransition key={card.id} classNames="item" timeout={500}>
                 <div className={cl.Card_list__card}>
                   <div className={cl.Card__list__card_title}>
-                    {index + 1}.{" "}
                     <a
                       href={card.url}
                       target="_blank"
                       className={cl.Card_list__link}
                     >
-                      {card.title}
+                      {index + 1}. {card.title}
                     </a>
                   </div>
                   <button
