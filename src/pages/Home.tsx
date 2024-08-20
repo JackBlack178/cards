@@ -52,7 +52,7 @@ const Home = () => {
             number={index + 1}
             key={article.id}
             id={article.id}
-            handleFavoriteClick={handleFavoriteClick}
+            handleFavoriteClick={() => handleFavoriteClick(article.id)}
             url={article.url}
             imageUrl={article.imageUrl}
             category={article.category}

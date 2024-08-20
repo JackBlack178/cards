@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface IArticle {
-  id: string | number;
+  id: number;
   title: string;
   body: string;
   rating?: number;
