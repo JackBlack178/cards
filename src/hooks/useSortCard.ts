@@ -18,6 +18,7 @@ export function useSortCard() {
 
     return article.category === selectedSort?.value;
   });
+
   const sortedAndSearchArticles = sortedArticles.filter((article) =>
     article.title.startsWith(queryInput),
   );
@@ -39,17 +40,24 @@ export function useSortCard() {
     setQueryInput(event.target.value);
   };
 
-  useEffect(() => {
-    setStateArticles(articles);
-  }, [articles]);
+  // useEffect(() => {
+  //   console.log("called1");
+  //   setStateArticles(articles);
+  // }, [articles]);
 
   useEffect(() => {
+    console.log("called2");
     dispatch(getArticles());
   }, []);
 
+  //todo Подумать насчет двойного рендеринга и переписать костыль ниже, но оно работает
+
   useEffect(() => {
-    setStateArticles(sortedAndSearchArticles);
-  }, [queryInput, selectedSort]);
+    if (!queryInput && !selectedSort?.value) setStateArticles(articles);
+    else {
+      setStateArticles(sortedAndSearchArticles);
+    }
+  }, [queryInput, selectedSort, articles]);
 
   return {
     handleInputChange,
