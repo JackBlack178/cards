@@ -26,12 +26,28 @@
   }
 
 
+
   &__title {
     text-align: center;
+
+
+    &_wrapper {
+      display: flex;
+      justify-content: space-between;
+      column-gap: 20px;
+      align-items: center;
+    }
   }
 
   &__text {
+    text-indent:30px;
+    @include mobile {
+      text-indent: 20px;
+    }
+  }
 
+  &__hidden {
+    opacity: 0;
   }
 
   &__extra {
@@ -39,6 +55,27 @@
     justify-content: space-between;
     column-gap: 20px;
     width: 100%;
+  }
+
+  &__favorite {
+    background-color: transparent;
+    border: none;
+
+
+    &_icon {
+      width: 30px;
+      height: 30px;
+      color: #b6b5b5;
+      transition-duration: var(--duration);
+
+      &_active {
+        color: orange;
+      }
+
+      @include hover {
+        color: #616161;
+      }
+    }
   }
 
   &__link {

@@ -13,6 +13,9 @@ export function useSortCard() {
 
   const sortedArticles = articles.filter((article) => {
     if (selectedSort?.value === "") return article;
+
+    if (selectedSort?.value === "favorite") return article.isFavorite;
+
     return article.category === selectedSort?.value;
   });
   const sortedAndSearchArticles = sortedArticles.filter((article) =>
@@ -26,6 +29,11 @@ export function useSortCard() {
     value: category.name,
     label: category.name,
   }));
+
+  sortOptions.push({
+    value: "favorite",
+    label: "Избранные",
+  });
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQueryInput(event.target.value);

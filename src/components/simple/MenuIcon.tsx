@@ -1,4 +1,4 @@
-const Menu = ({ className }: { className: string }) => {
+const MenuIcon = ({ className }: { className: string }) => {
   return (
     <svg
       className={className}
@@ -17,4 +17,4 @@ const Menu = ({ className }: { className: string }) => {
   );
 };
 
-export { Menu };
+export { MenuIcon };

@@ -1,10 +1,10 @@
 import cl from "./Header.module.scss";
-import { Logo } from "../components/simple/Logo.tsx";
+import { LogoIcon } from "../components/simple/LogoIcon.tsx";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { clsx } from "clsx";
 import { useRef } from "react";
-import { Menu } from "../components/simple/Menu.tsx";
+import { MenuIcon } from "../components/simple/MenuIcon.tsx";
 
 const Header = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <header className={cl.Header}>
       <div className={cl.Header__inner}>
-        <Logo className={cl.Header__logo}></Logo>
+        <LogoIcon className={cl.Header__logo}></LogoIcon>
         <nav className={clsx(cl.Header__nav, "hidden-mobile")}>
           <ul className={cl.Header__nav_list}>
             <li className={cl.Header__nav_item}>
@@ -40,7 +40,7 @@ const Header = () => {
           onClick={handleMenuClick}
           className={clsx(cl.Header__button_mobile, "visible-mobile")}
         >
-          <Menu className={cl.Header__menu}></Menu>
+          <MenuIcon className={cl.Header__menu}></MenuIcon>
         </button>
       </div>
       <dialog className={clsx(cl.Header__dialog)} ref={modalRef}>

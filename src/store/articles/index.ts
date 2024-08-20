@@ -8,6 +8,7 @@ export interface IArticle {
   url?: string;
   imageUrl?: string;
   category?: string;
+  isFavorite: boolean;
 }
 
 type Category = {
@@ -17,7 +18,7 @@ type Category = {
 
 type stateType = {
   articles: IArticle[];
-  favorites: number[];
+  favorites: Favorite[];
   categories: Category[];
 };
 
@@ -27,9 +28,14 @@ const initialState: stateType = {
   categories: [],
 };
 
+type Favorite = {
+  id: number;
+  isFavorite: boolean;
+};
+
 type payloadActionType = {
   body: IArticle[];
-  favorites: number[];
+  favorites: Favorite[];
   categories: Category[];
 };
 
@@ -44,6 +50,15 @@ export const articleSlice = createSlice({
       state.articles = action.payload.body;
       state.categories = action.payload.categories;
       state.favorites = action.payload.favorites;
+    },
+    changeFavoriteStatus: (state: stateType, action: PayloadAction<number>) => {
+      const id = action.payload;
+      state.articles.map((article) => {
+        if (article.id === id) {
+          article.isFavorite = !article.isFavorite;
+        }
+        return article;
+      });
     },
   },
 });

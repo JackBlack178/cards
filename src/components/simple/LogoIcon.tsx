@@ -1,4 +1,4 @@
-const Logo = ({ className }: { className: string }) => {
+const LogoIcon = ({ className }: { className: string }) => {
   return (
     <svg
       className={className}
@@ -14,4 +14,4 @@ const Logo = ({ className }: { className: string }) => {
   );
 };
 
-export { Logo };
+export { LogoIcon };

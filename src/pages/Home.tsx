@@ -6,10 +6,13 @@ import React from "react";
 
 import { Card } from "../widgets/Card.tsx";
 import { useSortCard } from "../hooks/useSortCard.ts";
+import { useFavoriteCard } from "../hooks/useFavoriteCard.ts";
 
 const Home = () => {
   const { handleInputChange, sortOptions, stateArticles, setSelectedSort } =
     useSortCard();
+
+  const { handleFavoriteClick } = useFavoriteCard();
 
   return (
     <>
@@ -43,10 +46,13 @@ const Home = () => {
       <section className={cl.Cards}>
         {stateArticles.map((article, index) => (
           <Card
+            isFavorite={article.isFavorite}
             title={article.title}
             body={article.body}
             number={index + 1}
             key={article.id}
+            id={article.id}
+            handleFavoriteClick={handleFavoriteClick}
             url={article.url}
             imageUrl={article.imageUrl}
             category={article.category}
