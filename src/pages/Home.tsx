@@ -1,38 +1,15 @@
 import Header from "../widgets/Header.tsx";
 import cl from "./Home.module.scss";
-import { InputMenu, option } from "../components/ui/InputMenu.tsx";
-import { useAppDispatch, useAppSelector } from "../hooks/useAppDispatch.ts";
-import { useEffect, useState } from "react";
-import { getArticles } from "../lib/actions.ts";
+import { InputMenu } from "../components/ui/InputMenu.tsx";
+
+import React from "react";
+
 import { Card } from "../widgets/Card.tsx";
+import { useSortCard } from "../hooks/useSortCard.ts";
 
 const Home = () => {
-  const dispatch = useAppDispatch();
-  const articles = useAppSelector((state) => state.article.articles);
-
-  const [stateArticles, setStateArticles] = useState(articles);
-  const categories = useAppSelector((state) => state.article.categories);
-
-  const [selectedSort, setSelectedSort] = useState<option>();
-  const sortOptions = categories.map((category) => ({
-    value: category.name,
-    label: category.name,
-  }));
-
-  useEffect(() => {
-    setStateArticles(articles);
-  }, [articles]);
-
-  useEffect(() => {
-    if (selectedSort)
-      setStateArticles(
-        articles.filter((article) => article.category === selectedSort.value),
-      );
-  }, [selectedSort]);
-
-  useEffect(() => {
-    dispatch(getArticles());
-  }, []);
+  const { handleInputChange, sortOptions, stateArticles, setSelectedSort } =
+    useSortCard();
 
   return (
     <>
@@ -42,14 +19,22 @@ const Home = () => {
         <div className={cl.Home__inner}>
           <div className={cl.Home__params}>
             <InputMenu
-              menuName="Сортировка"
+              menuName="Тип"
               options={sortOptions}
               setSelectState={setSelectedSort}
               className={cl.Home__params_select}
+              placeholder="Тип статьи"
             />
             <div className={cl.Home__params_input_wrapper}>
               <label htmlFor="query">Поиск</label>
-              <input id="query" className={cl.Home__params_input} />
+              <input
+                placeholder="Search ..."
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                  handleInputChange(event)
+                }
+                id="query"
+                className={cl.Home__params_input}
+              />
             </div>
           </div>
         </div>

@@ -15,6 +15,9 @@ interface InputMenuProps {
   closeOnSelect?: boolean;
   className?: string;
   setSelectState: (state: option) => void;
+  placeholder?: string;
+  hasEmptyValue?: boolean;
+  emptyMessage?: string;
 }
 
 const InputMenu: FC<InputMenuProps> = ({
@@ -23,10 +26,15 @@ const InputMenu: FC<InputMenuProps> = ({
   closeOnSelect = true,
   className,
   setSelectState,
+  placeholder,
+  hasEmptyValue = true,
+  emptyMessage = "Любая",
 }) => {
   function handleInputChange(event: SingleValue<option>) {
-    if (event?.value) setSelectState(event);
+    if (event !== null) setSelectState(event);
   }
+
+  if (hasEmptyValue) options.push({ value: "", label: emptyMessage });
 
   return (
     <div className={clsx(cl.InputMenu__wrapper, className)}>
@@ -35,6 +43,7 @@ const InputMenu: FC<InputMenuProps> = ({
         className={cl.InputMenu__select}
         options={options}
         closeMenuOnSelect={closeOnSelect}
+        placeholder={placeholder}
         onChange={(event) => handleInputChange(event)}
       ></Select>
     </div>
