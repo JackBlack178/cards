@@ -9,7 +9,10 @@ import { Card } from "../widgets/Card.tsx";
 const Home = () => {
   const dispatch = useAppDispatch();
   const articles = useAppSelector((state) => state.article.articles);
+
+  const [stateArticles, setStateArticles] = useState(articles);
   const categories = useAppSelector((state) => state.article.categories);
+
   const [selectedSort, setSelectedSort] = useState<option>();
   const sortOptions = categories.map((category) => ({
     value: category.name,
@@ -17,8 +20,19 @@ const Home = () => {
   }));
 
   useEffect(() => {
-    console.log(selectedSort);
+    setStateArticles(articles);
+  }, [articles]);
+
+  useEffect(() => {
+    if (selectedSort)
+      setStateArticles(
+        articles.filter((article) => article.category === selectedSort.value),
+      );
   }, [selectedSort]);
+
+  useEffect(() => {
+    dispatch(getArticles());
+  }, []);
 
   return (
     <>
@@ -42,7 +56,7 @@ const Home = () => {
       </section>
 
       <section className={cl.Cards}>
-        {articles.map((article, index) => (
+        {stateArticles.map((article, index) => (
           <Card
             title={article.title}
             body={article.body}

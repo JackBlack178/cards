@@ -1,5 +1,5 @@
 import cl from "./InputMenu.module.scss";
-import { FC, useState } from "react";
+import { FC } from "react";
 import Select, { SingleValue } from "react-select";
 import { clsx } from "clsx";
 
