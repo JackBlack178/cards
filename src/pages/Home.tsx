@@ -1,34 +1,24 @@
 import Header from "../widgets/Header.tsx";
 import cl from "./Home.module.scss";
-import { InputMenu } from "../components/ui/InputMenu.tsx";
+import { InputMenu, option } from "../components/ui/InputMenu.tsx";
 import { useAppDispatch, useAppSelector } from "../hooks/useAppDispatch.ts";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getArticles } from "../lib/actions.ts";
 import { Card } from "../widgets/Card.tsx";
-
-const sortTypes = [
-  {
-    value: "title",
-    label: "По названию",
-  },
-  {
-    value: "Compeleted",
-    label: "По статусу выполнения",
-  },
-];
-
-const defaultSortState = sortTypes[0];
 
 const Home = () => {
   const dispatch = useAppDispatch();
   const articles = useAppSelector((state) => state.article.articles);
   const categories = useAppSelector((state) => state.article.categories);
-  console.log(articles);
-  console.log(categories);
+  const [selectedSort, setSelectedSort] = useState<option>();
+  const sortOptions = categories.map((category) => ({
+    value: category.name,
+    label: category.name,
+  }));
 
   useEffect(() => {
-    dispatch(getArticles());
-  }, []);
+    console.log(selectedSort);
+  }, [selectedSort]);
 
   return (
     <>
@@ -39,8 +29,8 @@ const Home = () => {
           <div className={cl.Home__params}>
             <InputMenu
               menuName="Сортировка"
-              options={sortTypes}
-              selectedOption={defaultSortState}
+              options={sortOptions}
+              setSelectState={setSelectedSort}
               className={cl.Home__params_select}
             />
             <div className={cl.Home__params_input_wrapper}>

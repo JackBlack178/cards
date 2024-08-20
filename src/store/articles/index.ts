@@ -10,10 +10,15 @@ export interface IArticle {
   category?: string;
 }
 
+type Category = {
+  id: number;
+  name: string;
+};
+
 type stateType = {
   articles: IArticle[];
   favorites: number[];
-  categories: string[];
+  categories: Category[];
 };
 
 const initialState: stateType = {
@@ -25,7 +30,7 @@ const initialState: stateType = {
 type payloadActionType = {
   body: IArticle[];
   favorites: number[];
-  categories: string[];
+  categories: Category[];
 };
 
 export const articleSlice = createSlice({
