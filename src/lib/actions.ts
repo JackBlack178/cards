@@ -6,7 +6,6 @@ export function getArticles() {
   return async (dispatch: AppDispatch) => {
     const response = await axios.get("http://localhost:3000/articles");
     const data = await response.data;
-    const articles = data.body;
-    dispatch(articleActions.getArticles(articles));
+    dispatch(articleActions.getArticles(data));
   };
 }

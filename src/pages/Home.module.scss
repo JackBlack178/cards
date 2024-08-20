@@ -2,10 +2,18 @@
 
 .Home {
   composes: container;
-  margin-top:20px;
+  margin-top:30px;
+  margin-bottom:30px;
 
   &_inner {
 
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 30px;
   }
 
   &__params {
@@ -46,5 +54,22 @@
     &_input_label {
 
     }
+  }
+}
+
+.Cards {
+  composes: container;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:50px 15px;
+
+  @include desktop {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap:60px;
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(1, 1fr);
   }
 }

@@ -1,0 +1,53 @@
+@import '../styles/styles';
+
+.Article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid #939090;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  row-gap:10px;
+
+  &__body {
+    margin-bottom: 20px;
+  }
+
+  &__image {
+
+  }
+
+  &__category {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+
+  &__title {
+    text-align: center;
+  }
+
+  &__text {
+
+  }
+
+  &__extra {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 20px;
+    width: 100%;
+  }
+
+  &__link {
+    transition-duration: var(--duration);
+    text-decoration: underline;
+    color: #515050;
+    
+    @include hover {
+      color: #939090;
+    }
+  }
+}
