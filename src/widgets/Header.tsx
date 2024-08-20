@@ -3,17 +3,13 @@ import { LogoIcon } from "../components/simple/LogoIcon.tsx";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { clsx } from "clsx";
-import { useRef } from "react";
 import { MenuIcon } from "../components/simple/MenuIcon.tsx";
+import { Page } from "../store/pageState";
+import { useChangePageState } from "../hooks/useChangePageState.ts";
 
 const Header = () => {
-  const modalRef = useRef<HTMLDialogElement>(null);
-
-  function handleMenuClick() {
-    if (modalRef.current) {
-      modalRef.current.showModal();
-    }
-  }
+  const { handleChangePageState, pageState, handleMenuClick, modalRef } =
+    useChangePageState();
 
   return (
     <header className={cl.Header}>
@@ -22,13 +18,27 @@ const Header = () => {
         <nav className={clsx(cl.Header__nav, "hidden-mobile")}>
           <ul className={cl.Header__nav_list}>
             <li className={cl.Header__nav_item}>
-              <Link to="/" className={cl.Header__nav_link}>
+              <Link
+                onClick={() => handleChangePageState(Page.Home)}
+                to="/"
+                className={clsx(
+                  cl.Header__nav_link,
+                  pageState === "Home" && cl.Header__nav_link_active,
+                )}
+              >
                 Home
               </Link>
             </li>
             <li className={cl.Header__nav_item}>
-              <Link to="/" className={cl.Header__nav_link}>
-                Articles
+              <Link
+                onClick={() => handleChangePageState(Page.About)}
+                to="/About"
+                className={clsx(
+                  cl.Header__nav_link,
+                  pageState === "About" && cl.Header__nav_link_active,
+                )}
+              >
+                About
               </Link>
             </li>
           </ul>
@@ -54,12 +64,26 @@ const Header = () => {
           <Button className={clsx(cl.Header__dialog_button)}>Sign in</Button>
           <ul className={cl.Header__dialog_list}>
             <li className={cl.Header__dialog_item}>
-              <Link to="/" className={cl.Header__dialog_link}>
+              <Link
+                to="/"
+                onClick={() => handleChangePageState(Page.Home)}
+                className={clsx(
+                  cl.Header__dialog_link,
+                  pageState === "Home" && cl.Header__dialog_link_active,
+                )}
+              >
                 Home
               </Link>
             </li>
             <li className={cl.Header__dialog_item}>
-              <Link to="/" className={cl.Header__dialog_link}>
+              <Link
+                to="/"
+                onClick={() => handleChangePageState(Page.About)}
+                className={clsx(
+                  cl.Header__dialog_link,
+                  pageState === "About" && cl.Header__dialog_link_active,
+                )}
+              >
                 Articles
               </Link>
             </li>

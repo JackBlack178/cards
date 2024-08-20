@@ -1,0 +1,12 @@
+@import '../styles/styles';
+
+.About {
+  composes: container;
+  margin-top: 20px;
+  text-align: center;
+
+  &__body {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+}
