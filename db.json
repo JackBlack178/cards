@@ -27,7 +27,7 @@
         "title": "Как по-научному оправдать свою лень?",
         "body": "В этой статье приведем небольшую, с одной стороны шутливую, но с другой стороны полностью научную теорию с помощью которой можно оправдать себя в те моменты, когда над Вами взяла верх лень.",
         "rating": 6,
-        "isFavorite": false,
+        "isFavorite": true,
         "category": "Просто о сложном",
         "url": "https://educon.by/index.php/pozn/fizika/112-kak-po-nauchnomu-opravdat-svoyu-len",
         "imageUrl":  "https://educon.by/images/article/028.jpg"
@@ -37,7 +37,7 @@
         "title": "Как увидеть свой затылок с помощью черной дыры?",
         "body": "В этой статье кратко рассмотрим свойства черных дыр, возникающие вследствие их колоссального гравитационного притяжения, и то как интересно эти свойства «можно» было бы использовать при решении некоторых бытовых вопросов.",
         "rating": 4,
-        "isFavorite": false,
+        "isFavorite": true,
         "category": "Интересные факты",
         "url": "https://educon.by/index.php/pozn/fizika/96-kak-uvidet-svoj-zatylok-s-pomoshchyu-chernoj-dyry",
         "imageUrl":  "https://educon.by/images/article/007.jpg"
@@ -67,7 +67,7 @@
         "title": "Физика автомобильных аварий",
         "body": "В этой статье обсудим насколько безопасны сейчас автомобили? Почему не сделать машину еще более прочной, и над чем поработали инженеры, чтобы предотвратить плачевные последствия при аварии?",
         "rating": 7,
-        "isFavorite": false,
+        "isFavorite": true,
         "category": "Полезные факты",
         "url": "https://educon.by/index.php/pozn/fizika/106-fizika-avtomobilnykh-avarij",
         "imageUrl":  "https://educon.by/images/article/022.png"
@@ -97,7 +97,7 @@
         "title": "Каким «видит» мир объект, летящий со скоростью света?",
         "body": "Как известно скорость света – это хоть и большая, но все же конечная величина. Существуют вполне материальные объекты (например, фотоны – частицы из которых и состоит свет), которые двигаются со скоростью света. Как же «выглядит» мир «глазами» таких быстрых объектов?",
         "rating": 6,
-        "isFavorite": false,
+        "isFavorite": true,
         "category": "Полезные факты",
         "url": "https://educon.by/index.php/pozn/astronomia/93-kakim-vidit-mir-ob-ekt-letyashchij-so-skorostyu-sveta",
         "imageUrl":  "https://educon.by/images/article/002.jpg"
@@ -127,7 +127,7 @@
         "title": "Вирус – друг или враг?",
         "body": "Интересная статья о том, какова роль вирусов в эволюции человечества. Для отдельно взятого человека, зараженного каким-либо вирусом, этот вирус, конечно, большое зло. Но для человечества в целом, все далеко не так однозначно.",
         "rating": 10,
-        "isFavorite": false,
+        "isFavorite": true,
         "category": "Мифы и реальность",
         "url": "https://educon.by/index.php/pozn/biologia/111-virus-drug-ili-vrag",
         "imageUrl":  "https://educon.by/images/article/027.jpg"
@@ -157,7 +157,7 @@
         "title": "Могут ли люди чувствовать температуру?",
         "body": "Многие из нас думают, что могут измерить температуру окружающих предметов. Но это не совсем так. В этой статье попробуем разобраться так в чем же подвох, и что на самом деле мы ощущаем?",
         "rating": 4,
-        "isFavorite": false,
+        "isFavorite": true,
         "category": "Интересные факты",
         "url": "https://educon.by/index.php/pozn/biologia/107-mogut-li-lyudi-chuvstvovat-temperaturu",
         "imageUrl":  "https://educon.by/images/article/023.jpg"
@@ -187,7 +187,7 @@
         "title": "Правда ли, что мозг работает всего на 10%?",
         "body" : "В наши дни часто можно встретиться с мнением о том, что человеческий мозг, якобы работает всего на 10% от всех своих возможностей. На основе подобного утверждения даже строится сюжет некоторых популярных фильмов. Попробуем разобраться, действительно ли каждый из нас может внезапно стать в десять раз умнее, или это миф, и если да, то откуда он взялся?",
         "rating": 7,
-        "isFavorite": false,
+        "isFavorite": true,
         "category": "Мифы и реальность",
         "url": "https://educon.by/index.php/pozn/biologia/113-pravda-li-chto-mozg-rabotaet-vsego-na-10",
         "imageUrl":  "https://educon.by/images/article/029.jpg"
@@ -207,7 +207,7 @@
         "title": "Как на самом деле учился Эйнштейн?",
         "body" : "Часто можно услышать мнение, будто бы Эйнштейн слабо понимал математику и вообще учился крайне плохо. Этот довод часто приводится как «оправдание» плохой учебы современных школьников. Но так ли это?",
         "rating": 9,
-        "isFavorite": false,
+        "isFavorite": true,
         "category": "Мифы и реальность",
         "url": "https://educon.by/index.php/pozn/istoriya/100-kak-na-samom-dele-uchilsya-ejnshtejn",
         "imageUrl":  "https://educon.by/images/article/015.jpg"

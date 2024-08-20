@@ -41,6 +41,28 @@
     }
   }
 
+  &__favorite_icon {
+    width: 30px;
+    height: 30px;
+    color: #b6b5b5;
+    transition-duration: var(--duration);
+
+    @include hover {
+      color: orange;
+    }
+  }
+
+  &__button_favorite {
+    border: none;
+    background: transparent;
+  }
+
+  &__buttons_wrapper {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+  }
+
   &__button {
     color: black !important;
     transition-duration: var(--duration);
@@ -85,6 +107,16 @@
     height: 100vh;
     font-size: 20px !important;
 
+    &_inner {
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+    }
+
+    &_favorite {
+      border: none;
+      background-color: transparent;
+    }
 
     &:modal {
       max-width: 100%;
@@ -93,7 +125,6 @@
 
     &_button {
       composes: Header__button;
-      margin-bottom: 50px !important;
       font-size: 20px !important;
     }
 

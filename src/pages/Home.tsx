@@ -2,21 +2,25 @@ import Header from "../widgets/Header.tsx";
 import cl from "./Home.module.scss";
 import { InputMenu } from "../components/ui/InputMenu.tsx";
 
-import React from "react";
+import React, { useCallback, useState } from "react";
 
 import { Card } from "../widgets/Card.tsx";
 import { useSortCard } from "../hooks/useSortCard.ts";
 import { useFavoriteCard } from "../hooks/useFavoriteCard.ts";
+import { CardFavoriteModal } from "../widgets/CardFavoriteModal.tsx";
 
 const Home = () => {
   const { handleInputChange, sortOptions, stateArticles, setSelectedSort } =
     useSortCard();
-
   const { handleFavoriteClick } = useFavoriteCard();
+
+  const [showFavoriteCard, setShowFavoriteCard] = useState<boolean>(false);
+  const showFavoriteCards = useCallback(() => setShowFavoriteCard(true), []);
+  const closeFavoriteCards = useCallback(() => setShowFavoriteCard(false), []);
 
   return (
     <>
-      <Header></Header>
+      <Header showFavCards={showFavoriteCards}></Header>
       <section className={cl.Home}>
         <h1 className={cl.Home__title}>Позновательные статьи и факты</h1>
         <div className={cl.Home__inner}>
@@ -60,6 +64,10 @@ const Home = () => {
           ></Card>
         ))}
       </section>
+      <CardFavoriteModal
+        closeFavCards={closeFavoriteCards}
+        show={showFavoriteCard}
+      ></CardFavoriteModal>
     </>
   );
 };

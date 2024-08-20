@@ -6,8 +6,10 @@ import { clsx } from "clsx";
 import { MenuIcon } from "../components/simple/MenuIcon.tsx";
 import { Page } from "../store/pageState";
 import { useChangePageState } from "../hooks/useChangePageState.ts";
+import { FavoriteIcon } from "../components/simple/FavoriteIcon.tsx";
+import { memo } from "react";
 
-const Header = () => {
+const Header = memo(({ showFavCards }: { showFavCards?: () => void }) => {
   const { handleChangePageState, pageState, handleMenuClick, modalRef } =
     useChangePageState();
 
@@ -43,9 +45,22 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-        <Button className={clsx(cl.Header__button, "hidden-mobile")}>
-          Sign in
-        </Button>
+        <div className={cl.Header__buttons_wrapper}>
+          <Button className={clsx(cl.Header__button, "hidden-mobile")}>
+            Sign in
+          </Button>
+
+          <button
+            className={clsx(
+              cl.Header__button_favorite,
+              !showFavCards && "visually-hidden",
+            )}
+            onClick={showFavCards}
+          >
+            <FavoriteIcon className={cl.Header__favorite_icon}></FavoriteIcon>
+          </button>
+        </div>
+
         <button
           onClick={handleMenuClick}
           className={clsx(cl.Header__button_mobile, "visible-mobile")}
@@ -53,6 +68,7 @@ const Header = () => {
           <MenuIcon className={cl.Header__menu}></MenuIcon>
         </button>
       </div>
+
       <dialog className={clsx(cl.Header__dialog)} ref={modalRef}>
         <form className={cl.Header__dialog_form} method="dialog">
           <button
@@ -62,6 +78,7 @@ const Header = () => {
         </form>
         <div className={cl.Header__dialog_inner}>
           <Button className={clsx(cl.Header__dialog_button)}>Sign in</Button>
+
           <ul className={cl.Header__dialog_list}>
             <li className={cl.Header__dialog_item}>
               <Link
@@ -77,7 +94,7 @@ const Header = () => {
             </li>
             <li className={cl.Header__dialog_item}>
               <Link
-                to="/"
+                to="/About"
                 onClick={() => handleChangePageState(Page.About)}
                 className={clsx(
                   cl.Header__dialog_link,
@@ -92,6 +109,6 @@ const Header = () => {
       </dialog>
     </header>
   );
-};
+});
 
 export default Header;

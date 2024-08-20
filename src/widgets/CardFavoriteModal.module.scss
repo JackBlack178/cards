@@ -1,0 +1,112 @@
+@import '../styles/styles';
+
+.Card_list {
+  position: absolute;
+  padding: 30px 10px;
+  //border: 1px solid black;
+  border-radius: 10px;
+  top: 70px;
+  right: 53px;
+  max-width: 450px;
+  width: 95%;
+  background-color: white;
+  box-shadow: 2px 2px 4px #000;
+
+
+
+  @include mobile {
+    right: 50%;
+    translate: 50%;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    &_opacitiy {
+      opacity: 0;
+      width: 10px;
+      height: 10px;
+    }
+
+
+  }
+
+  &__button_close {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: rgb(240, 240, 240);
+    transition-duration: var(--duration);
+
+    @include hover {
+      opacity: 0.7;
+    }
+
+    &::after,
+    &::before {
+      content: '';
+      height: 1px;
+      width: 50%;
+      position: absolute;
+      background-color: black;
+
+      @include flex-center;
+      @include abs-center;
+    }
+
+    &::after {
+      rotate:45deg;
+    }
+
+    &::before {
+      rotate:-45deg;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    row-gap:10px;
+  }
+  &__card {
+    color: #494848;
+    font-size: 15px;
+    display: flex;
+    column-gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__button_delete {
+    color:black;
+    border: none;
+    background-color: transparent;
+  }
+
+  &__delete_icon {
+    width: 20px;
+    height: 20px;
+    transition-duration: var(--duration);
+
+    @include hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__link {
+    color:inherit;
+    border-bottom: 1px solid grey;
+    transition-duration: var(--duration);
+
+    @include hover {
+      color:grey;
+    }
+  }
+
+}
+
