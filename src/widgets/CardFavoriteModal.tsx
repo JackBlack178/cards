@@ -1,12 +1,11 @@
 import cl from "./CardFavoriteModal.module.scss";
 import { FC, useRef } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import "./temp.scss";
 import { clsx } from "clsx";
 import { useFavoriteCard } from "../hooks/useFavoriteCard.ts";
 import { DeleteIcon } from "../components/simple/DeleteIcon.tsx";
-import { useAppDispatch } from "../hooks/useAppDispatch.ts";
-import { articleActions } from "../store/articles";
+import { useChangeFavoriteStateMutation } from "../lib/articleAPI.ts";
+import { IArticle } from "../store/articles";
 
 interface CardFavoriteModalProps {
   show: boolean;
@@ -20,9 +19,13 @@ const CardFavoriteModal: FC<CardFavoriteModalProps> = ({
   const nodeRef = useRef(null);
   const { favoriteCards } = useFavoriteCard();
 
-  const dispatch = useAppDispatch();
-  const deleteFavorite = (id: number) => {
-    dispatch(articleActions.changeFavoriteStatus(id));
+  const [changeArticleFavoriteState] = useChangeFavoriteStateMutation();
+  const deleteFavorite = async (article: IArticle) => {
+    console.log("Удаление");
+    await changeArticleFavoriteState({
+      id: article.id,
+      isFavorite: false,
+    }).unwrap();
   };
 
   return (
@@ -59,7 +62,7 @@ const CardFavoriteModal: FC<CardFavoriteModalProps> = ({
                   </div>
                   <button
                     className={cl.Card_list__button_delete}
-                    onClick={() => deleteFavorite(card.id)}
+                    onClick={() => deleteFavorite(card)}
                   >
                     <DeleteIcon className={cl.Card_list__delete_icon} />
                   </button>

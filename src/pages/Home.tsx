@@ -1,5 +1,6 @@
 import Header from "../widgets/Header.tsx";
 import cl from "./Home.module.scss";
+import "./home.scss";
 import { InputMenu } from "../components/ui/InputMenu.tsx";
 
 import React, { useCallback, useState } from "react";
@@ -9,6 +10,7 @@ import { useSortCard } from "../hooks/useSortCard.ts";
 import { useFavoriteCard } from "../hooks/useFavoriteCard.ts";
 import { CardFavoriteModal } from "../widgets/CardFavoriteModal.tsx";
 import Spinner from "../components/simple/Spinner.tsx";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const Home = () => {
   const {
@@ -57,22 +59,31 @@ const Home = () => {
             </div>
           </section>
 
-          <section className={cl.Cards}>
-            {stateArticles!.map((article, index) => (
-              <Card
-                isFavorite={article.isFavorite}
-                title={article.title}
-                body={article.body}
-                number={index + 1}
-                key={article.id}
-                id={article.id}
-                handleFavoriteClick={() => handleFavoriteClick(article.id)}
-                url={article.url}
-                imageUrl={article.imageUrl}
-                category={article.category}
-                rating={article.rating}
-              ></Card>
-            ))}
+          <section>
+            <TransitionGroup className={cl.Cards}>
+              {stateArticles!.map((article, index) => (
+                <CSSTransition
+                  timeout={500}
+                  key={article.id}
+                  in={!!article}
+                  classNames="card-dynamic"
+                >
+                  <Card
+                    isFavorite={article.isFavorite}
+                    title={article.title}
+                    body={article.body}
+                    number={index + 1}
+                    key={article.id}
+                    id={article.id}
+                    handleFavoriteClick={() => handleFavoriteClick(article)}
+                    url={article.url}
+                    imageUrl={article.imageUrl}
+                    category={article.category}
+                    rating={article.rating}
+                  ></Card>
+                </CSSTransition>
+              ))}
+            </TransitionGroup>
           </section>
           <CardFavoriteModal
             closeFavCards={closeFavoriteCards}

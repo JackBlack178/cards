@@ -78,3 +78,19 @@
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
+
+.card-dynamic-enter {
+  opacity: 0;
+}
+.card-dynamic-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.card-dynamic-exit {
+  opacity: 1;
+}
+.card-dynamic-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}

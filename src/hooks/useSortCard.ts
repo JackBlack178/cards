@@ -1,17 +1,18 @@
-import { useAppDispatch } from "./useAppDispatch.ts";
 import React, { useEffect, useState } from "react";
 import { option } from "../components/ui/InputMenu.tsx";
-import { getArticles } from "../lib/actions.ts";
-import { useGetArticlesQuery } from "../lib/articleAPI.ts";
+import {
+  Category,
+  useGetArticlesQuery,
+  useGetCategoriesQuery,
+} from "../lib/articleAPI.ts";
 import { IArticle } from "../store/articles";
 
 export function useSortCard() {
-  const dispatch = useAppDispatch();
+  const { data: dataArticles, isLoading } = useGetArticlesQuery(undefined);
+  const { data: dataCategory } = useGetCategoriesQuery(undefined);
 
-  const { data, isLoading } = useGetArticlesQuery(undefined);
-
-  const articles: IArticle[] = data?.body || [];
-  const categories: { id: number; name: string }[] = data?.categories || [];
+  const articles: IArticle[] = dataArticles || [];
+  const categories: Category[] = dataCategory || [];
 
   const [selectedSort, setSelectedSort] = useState<option>();
   const [queryInput, setQueryInput] = useState<string>("");
@@ -49,10 +50,6 @@ export function useSortCard() {
   //   setStateArticles(articles);
   // }, [articles]);
 
-  useEffect(() => {
-    dispatch(getArticles());
-  }, []);
-
   //todo Подумать насчет двойного рендеринга и переписать костыль ниже, но оно работает
 
   useEffect(() => {
@@ -60,7 +57,7 @@ export function useSortCard() {
     else {
       setStateArticles(sortedAndSearchArticles);
     }
-  }, [queryInput, selectedSort, isLoading]);
+  }, [queryInput, selectedSort, isLoading, dataArticles]);
 
   return {
     handleInputChange,

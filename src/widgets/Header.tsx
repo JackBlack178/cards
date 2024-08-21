@@ -8,6 +8,7 @@ import { Page } from "../store/pageState";
 import { useChangePageState } from "../hooks/useChangePageState.ts";
 import { FavoriteIcon } from "../components/simple/FavoriteIcon.tsx";
 import { memo } from "react";
+import "./temp.scss";
 
 const Header = memo(({ showFavCards }: { showFavCards?: () => void }) => {
   const { handleChangePageState, pageState, handleMenuClick, modalRef } =
