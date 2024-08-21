@@ -19,7 +19,7 @@ export function useSortCard() {
 
   const sortedArticles = sortArticles(selectedSort, articles);
   const sortedAndSearchArticles = sortedArticles.filter((article) =>
-    article.title.startsWith(queryInput),
+    article.title.toLowerCase().startsWith(queryInput.toLowerCase()),
   );
 
   const [stateArticles, setStateArticles] = useState(articles);
