@@ -12,6 +12,16 @@
   &__spinner {
     margin:0 auto;
     margin-top:20vh;
+    width: 100px;
+
+    @include desktop {
+      width: 80px;
+    }
+
+
+    @include mobile {
+      width: 60px;
+    }
   }
 
   &__title {

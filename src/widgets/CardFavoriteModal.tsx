@@ -6,6 +6,7 @@ import { useFavoriteCard } from "../hooks/useFavoriteCard.ts";
 import { DeleteIcon } from "../components/simple/DeleteIcon.tsx";
 import { useChangeFavoriteStateMutation } from "../lib/articleAPI.ts";
 import { IArticle } from "../store/articles";
+import "./temp.scss";
 
 interface CardFavoriteModalProps {
   show: boolean;
