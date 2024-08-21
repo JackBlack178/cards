@@ -14,7 +14,10 @@ export function useSortCard() {
   const articles: IArticle[] = dataArticles || [];
   const categories: Category[] = dataCategory || [];
 
-  const [selectedSort, setSelectedSort] = useState<option>();
+  const [selectedSort, setSelectedSort] = useState<option>({
+    value: "",
+    label: "",
+  });
   const [queryInput, setQueryInput] = useState<string>("");
 
   const sortedArticles = sortArticles(selectedSort, articles);

@@ -12,7 +12,7 @@ services:
 
 
   react-app:
-    image: 'jackblack178/cards:react-app2'
+    image: 'jackblack178/cards:react-app3'
     container_name: frontend
     ports:
       - "80:80"
