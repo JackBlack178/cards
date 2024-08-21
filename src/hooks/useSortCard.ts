@@ -1,15 +1,20 @@
-import { useAppDispatch, useAppSelector } from "./useAppDispatch.ts";
+import { useAppDispatch } from "./useAppDispatch.ts";
 import React, { useEffect, useState } from "react";
 import { option } from "../components/ui/InputMenu.tsx";
 import { getArticles } from "../lib/actions.ts";
+import { useGetArticlesQuery } from "../lib/articleAPI.ts";
+import { IArticle } from "../store/articles";
 
 export function useSortCard() {
   const dispatch = useAppDispatch();
 
+  const { data, isLoading } = useGetArticlesQuery(undefined);
+
+  const articles: IArticle[] = data?.body || [];
+  const categories: { id: number; name: string }[] = data?.categories || [];
+
   const [selectedSort, setSelectedSort] = useState<option>();
   const [queryInput, setQueryInput] = useState<string>("");
-
-  const articles = useAppSelector((state) => state.article.articles);
 
   const sortedArticles = articles.filter((article) => {
     if (selectedSort?.value === "") return article;
@@ -24,7 +29,6 @@ export function useSortCard() {
   );
 
   const [stateArticles, setStateArticles] = useState(articles);
-  const categories = useAppSelector((state) => state.article.categories);
 
   const sortOptions = categories.map((category) => ({
     value: category.name,
@@ -56,12 +60,13 @@ export function useSortCard() {
     else {
       setStateArticles(sortedAndSearchArticles);
     }
-  }, [queryInput, selectedSort, articles]);
+  }, [queryInput, selectedSort, isLoading]);
 
   return {
     handleInputChange,
     sortOptions,
     stateArticles,
     setSelectedSort,
+    isLoading,
   };
 }
