@@ -22,7 +22,6 @@ const CardFavoriteModal: FC<CardFavoriteModalProps> = ({
 
   const [changeArticleFavoriteState] = useChangeFavoriteStateMutation();
   const deleteFavorite = async (article: IArticle) => {
-    console.log("Удаление");
     await changeArticleFavoriteState({
       id: article.id,
       isFavorite: false,

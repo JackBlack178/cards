@@ -3,7 +3,7 @@ version: '3.8'
 services:
 
   json-server:
-    image: 'jackblack178/cards:json-server'
+    image: 'jackblack178/cards:json-server2'
     volumes:
       - ./db.json:/data/db.json
     command: json-server --watch /data/db.json --port 3000
@@ -12,7 +12,7 @@ services:
 
 
   react-app:
-    image: 'jackblack178/cards:react-app'
+    image: 'jackblack178/cards:react-app2'
     container_name: frontend
     ports:
       - "80:80"
